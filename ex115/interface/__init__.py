@@ -13,43 +13,29 @@ def linha(mensagem='',tudo=True):
      so_linha = '~' * 40
      print(so_linha)
 
-def pintar_menu():
+def pintar_menu(lista):
+    cont=0
     linha('Menu Principal',tudo=True)
-    print('1- Ver pessoas cadastradas')
-    print('2- Cadastrar uma nova pessoa')
-    print('3- Sair')
+    for p in lista:
+        cont += 1
+        print(f'{cont} - {p}')
     linha(tudo=False)
+    opcao = LeiaINT('sua opção: ')
+    return opcao
 
 
 
-def LeiaINT(mensagem):
+def LeiaINT(mensagem=''):
     while True:
         try:
             num = int(input(mensagem))
-            if num == 1:
-                time.sleep(0.5)
-                linha('OPÇÃO 1', tudo=True)
-                pintar_menu()
-
-            if num == 2:
-                time.sleep(0.5)
-                linha('OPÇÃO 2', tudo=True)
-                pintar_menu()
-
-            else:
-                if num == 3:
-                    linha('SAINDO DO SISTEMA ... ATÉ LOGO')
-                    return num
-
-        except  (TypeError,ValueError):
+        except (TypeError,ValueError):
             print('ERRO, informe um codigo valido')
         except KeyboardInterrupt:
             print('o usuario encerreou bruscamente o programa')
+        else:
+            return num
 
-
-
-def cadastros(dado):
-    pass
 
 
 
